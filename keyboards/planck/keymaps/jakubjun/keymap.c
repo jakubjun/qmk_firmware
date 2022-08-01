@@ -1,5 +1,12 @@
 #include QMK_KEYBOARD_H
 
+enum {
+    TD_SHIFT_MO1 = 0
+};
+
+qk_tap_dance_action_t tap_dance_actions[] = {
+    [TD_SHIFT_MO1] = ACTION_TAP_DANCE_DOUBLE(KC_LSFT, MO(2))
+};
 
 /* THIS FILE WAS GENERATED!
  *
