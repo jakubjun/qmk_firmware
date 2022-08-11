@@ -36,7 +36,7 @@
          "KC_LEFT"     , "KC_DOWN"     , "KC_UP"     , "KC_RGHT"      , "KC_PSCR",
 
          "LGUI(KC_SPC)", "LGUI(KC_M)"  , "LGUI(KC_N)", "LGUI(KC_MINS)", "SGUI(KC_MINS)",
-         "KC_TAB"      , "KC_ENT"      , "KC_NO"     , "KC_NO"        , "KC_NO",
+         "KC_TAB"      , "KC_ENT"      , "KC_PGUP"   , "KC_PGDN"      , "KC_NO",
 
          "KC_TRNS"     , "KC_NO",
          "KC_LSFT"     , "MO(3)"
