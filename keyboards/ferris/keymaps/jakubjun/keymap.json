@@ -29,7 +29,7 @@
          "MO(3)"       , "KC_LCTL",
          "KC_NO"       , "KC_TRNS"
         ],
-        ["KC_PIPE"     , "KC_TILD"     , "KC_GRV"    , "KC_BSLS"      , "KC_NO",
+        ["KC_PIPE"     , "KC_TILD"     , "KC_GRV"    , "KC_BSLS"      , "SGUI(KC_SPC)",
          "KC_UNDS"     , "KC_MINS"     , "KC_QUOT"   , "KC_DQUO"      , "KC_NO",
 
          "KC_ESC"      , "KC_LCTL"     , "KC_LGUI"   , "KC_LSFT"      , "KC_LALT",
@@ -41,14 +41,14 @@
          "KC_TRNS"     , "KC_NO",
          "KC_LSFT"     , "MO(3)"
         ],
-        ["LGUI(KC_Q)"  , "LGUI(KC_V)"  , "LGUI(KC_H)", "LGUI(KC_F)"   , "LGUI(KC_SPC)",
+        ["LGUI(KC_Q)"  , "LGUI(KC_V)"  , "LGUI(KC_H)", "LGUI(KC_F)"   , "KC_NO",
          "LGUI(KC_1)"  , "LGUI(KC_2)"  , "LGUI(KC_3)", "LGUI(KC_4)"   , "LGUI(KC_5)",
 
          "LGUI(KC_R)"  , "LGUI(KC_W)"  , "LGUI(KC_S)", "LGUI(KC_E)"   , "LGUI(KC_G)",
          "LGUI(KC_J)"  , "LGUI(KC_K)"  , "LGUI(KC_L)", "LGUI(KC_SCLN)", "LGUI(KC_A)",
 
          "KC_NO"       , "KC_NO"       , "KC_NO"     , "SGUI(KC_Q)"   , "SGUI(KC_R)",
-         "LGUI(KC_D)"  , "LGUI(KC_ENT)", "KC_NO"     , "KC_NO"        , "QK_BOOT",
+         "LGUI(KC_D)"  , "LGUI(KC_ENT)", "KC_NO"     , "KC_NO"        , "KC_NO",
 
          "KC_TRNS"     , "MO(4)",
          "MO(4)"       , "KC_TRNS"
@@ -57,7 +57,7 @@
          "SGUI(KC_1)"  , "SGUI(KC_2)"  , "SGUI(KC_3)", "SGUI(KC_4)"   , "SGUI(KC_5)",
 
          "KC_NO"       , "KC_NO"       , "KC_NO"     , "KC_NO"        , "KC_NO",
-         "SGUI(KC_J)"  , "SGUI(KC_K)"  , "SGUI(KC_L)", "SGUI(KC_SCLN)", "SGUI(KC_SPC)",
+         "SGUI(KC_J)"  , "SGUI(KC_K)"  , "SGUI(KC_L)", "SGUI(KC_SCLN)", "KC_NO",
 
          "KC_NO"       , "KC_NO"       , "KC_NO"     , "KC_NO"        , "KC_NO",
          "KC_NO"       , "KC_NO"       , "KC_NO"     , "KC_NO"        , "KC_NO",
