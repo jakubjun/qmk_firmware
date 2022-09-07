@@ -223,7 +223,7 @@
       "KC_NO"
     ],
     [
-      "KC_NO",
+      "LCTL(KC_BSPC)",
       "KC_NO",
       "KC_NO",
       "KC_WH_U",
@@ -233,8 +233,8 @@
       "KC_NO",
       "KC_NO",
       "KC_NO",
-      "KC_NO",
-      "KC_NO",
+      "KC_BSPC",
+      "KC_BTN3",
       "KC_BTN2",
       "KC_BTN1",
       "KC_NO",
@@ -254,9 +254,9 @@
       "KC_NO",
       "KC_NO",
       "KC_NO",
-      "KC_TRNS",
-      "KC_BSPC",
-      "LCTL(KC_BSPC)"
+      "KC_NO",
+      "KC_NO",
+      "KC_NO"
     ]
   ],
   "author": ""
