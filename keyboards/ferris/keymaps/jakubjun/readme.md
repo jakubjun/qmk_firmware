@@ -1,6 +1,10 @@
 A usable default keymap for the Ferris keyboard
 ===============================================
 
+
+
+
+
 Keymaps in general are quite personal, so it is difficult to come up with a default that will suit every user.
 
 This keymap makes heavy use of keys behaving differently when tapped and held, so that all the keys one may need remain accessible despite the low number of thumb keys.
