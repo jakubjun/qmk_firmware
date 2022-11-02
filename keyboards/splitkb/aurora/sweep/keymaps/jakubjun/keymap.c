@@ -142,14 +142,6 @@ static void render_luna(int LUNA_X, int LUNA_Y) {
         anim_timer = timer_read32();
         animate_luna();
     }
-
-    /* this fixes the screen on and off bug */
-    if (current_wpm > 0) {
-        oled_on();
-        anim_sleep = timer_read32();
-    } else if (timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
-        oled_off();
-    }
 }
 
 /* KEYBOARD PET END */
@@ -157,24 +149,28 @@ static void render_luna(int LUNA_X, int LUNA_Y) {
 #ifdef OLED_ENABLE
 bool oled_task_user(void) {
     /* KEYBOARD PET VARIABLES START */
-
     current_wpm   = get_current_wpm();
-    led_usb_state = host_keyboard_led_state();
+    
+    if (timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
+        oled_off();
+    }
 
     if (is_keyboard_master()) {
-        render_luna(0, 10);
-        /* wpm counter */
-        uint8_t n = current_wpm;
-        char    wpm_str[4];
-        oled_set_cursor(0, 14);
-        wpm_str[3] = '\0';
-        wpm_str[2] = '0' + n % 10;
-        wpm_str[1] = '0' + (n /= 10) % 10;
-        wpm_str[0] = '0' + n / 10;
-        oled_write(wpm_str, false);
+        if (is_oled_on()) {
+            render_luna(0, 10);
+            /* wpm counter */
+            uint8_t n = current_wpm;
+            char    wpm_str[4];
+            oled_set_cursor(0, 14);
+            wpm_str[3] = '\0';
+            wpm_str[2] = '0' + n % 10;
+            wpm_str[1] = '0' + (n /= 10) % 10;
+            wpm_str[0] = '0' + n / 10;
+            oled_write(wpm_str, false);
 
-        oled_set_cursor(0, 15);
-        oled_write(" wpm", false);
+            oled_set_cursor(0, 15);
+            oled_write(" wpm", false);
+        }
     } else {
     }
     return false;
@@ -182,6 +178,13 @@ bool oled_task_user(void) {
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+    if (!is_oled_on()) {
+        oled_on();
+    }
+    current_wpm   = get_current_wpm();
+    anim_sleep = timer_read32();
+
     switch (keycode) {
             /* KEYBOARD PET STATUS START */
 
