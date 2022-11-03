@@ -150,7 +150,8 @@ static void render_luna(int LUNA_X, int LUNA_Y) {
 bool oled_task_user(void) {
     /* KEYBOARD PET VARIABLES START */
     current_wpm   = get_current_wpm();
-    
+    led_usb_state = host_keyboard_led_state();
+
     if (timer_elapsed32(anim_sleep) > OLED_TIMEOUT) {
         oled_off();
     }
@@ -182,8 +183,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!is_oled_on()) {
         oled_on();
     }
-    current_wpm   = get_current_wpm();
-    anim_sleep = timer_read32();
+    current_wpm = get_current_wpm();
+    anim_sleep  = timer_read32();
 
     switch (keycode) {
             /* KEYBOARD PET STATUS START */
