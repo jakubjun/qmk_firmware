@@ -67,6 +67,13 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                     tap_code16(LCTL(KC_1));
                 }
                 break;
+            case 4:
+                if (clockwise) {
+                    tap_code16(LCTL(KC_3));
+                } else {
+                    tap_code16(LCTL(KC_4));
+                }
+                break;
             case 6:
                 if (clockwise) {
                     tap_code16(LCTL(KC_O));
