@@ -101,11 +101,14 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 }
 #endif
 
+void suspend_power_down_user(void) {
+    oled_off();
+}
+
 #ifdef OLED_ENABLE
 bool oled_task_user(void) {
     // A 128x32 OLED rotated 90 degrees is 5 characters wide and 16 characters tall
     // This example string should fill that neatly
-    const char *text = PSTR(" e");
 
     if (is_keyboard_master()) {
         switch (get_highest_layer(layer_state)) {
@@ -169,8 +172,6 @@ bool oled_task_user(void) {
                 // Or use the write_ln shortcut over adding '\n' to the end of your string
                 oled_write_ln_P(PSTR("Undefined"), false);
         }
-    } else {
-        oled_write_P(text, false);
     }
     return false;
 }
