@@ -11,7 +11,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [1] = LAYOUT_split_3x6_3(KC_NO, KC_EXLM, KC_AT, KC_EQL, KC_DLR, KC_PERC, LGUI(KC_B), KC_7, KC_8, KC_9, KC_DOT, KC_NO, KC_NO, KC_LPRN, KC_ASTR, KC_CIRC, KC_AMPR, KC_RPRN, LGUI(KC_U), KC_4, KC_5, KC_6, KC_0, KC_NO, KC_NO, KC_LBRC, KC_RBRC, KC_HASH, KC_LCBR, KC_RCBR, KC_CAPS, KC_1, KC_2, KC_3, KC_PPLS, KC_NO, KC_NO, MO(3), KC_LCTL, KC_NO, KC_TRNS, KC_NO),
     [2] = LAYOUT_split_3x6_3(KC_NO, LCTL(KC_C), LCTL(KC_V), KC_GRV, KC_BSLS, SGUI(KC_SPC), KC_UNDS, KC_MINS, KC_QUOT, KC_DQUO, KC_PIPE, KC_NO, KC_NO, KC_ESC, KC_LCTL, KC_LGUI, KC_LSFT, KC_LALT, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_PSCR, KC_NO, KC_NO, LGUI(KC_SPC), LGUI(KC_M), LGUI(KC_N), LGUI(KC_MINS), SGUI(KC_MINS), KC_TAB, KC_PGDN, KC_PGUP, KC_ENT, KC_TILD, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_LSFT, MO(3), KC_NO),
     [3] = LAYOUT_split_3x6_3(KC_NO, LGUI(KC_Q), LGUI(KC_V), LGUI(KC_H), LGUI(KC_F), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, LGUI(KC_R), LGUI(KC_W), LGUI(KC_S), LGUI(KC_E), LGUI(KC_G), LGUI(KC_J), LGUI(KC_K), LGUI(KC_L), LGUI(KC_SCLN), LGUI(KC_A), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, SGUI(KC_Q), SGUI(KC_R), LGUI(KC_D), LGUI(KC_ENT), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, MO(4), MO(4), KC_TRNS, KC_NO),
-    [4] = LAYOUT_split_3x6_3(KC_NO, QK_BOOT, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, SGUI(KC_J), SGUI(KC_K), SGUI(KC_L), SGUI(KC_SCLN), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_NO, KC_NO),
+    [4] = LAYOUT_split_3x6_3(KC_NO, QK_BOOT, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, SGUI(KC_J), SGUI(KC_K), SGUI(KC_L), SGUI(KC_SCLN), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_NO, LCTL(KC_5)),
     [5] = LAYOUT_split_3x6_3(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_F7, KC_F8, KC_F9, KC_F10, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_F4, KC_F5, KC_F6, KC_F11, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_F1, KC_F2, KC_F3, KC_F12, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO),
     [6] = LAYOUT_split_3x6_3(KC_NO, LCTL(KC_BSPC), KC_NO, KC_NO, KC_WH_U, KC_NO, KC_NO, LGUI(KC_7), LGUI(KC_8), LGUI(KC_9), KC_NO, KC_NO, KC_NO, KC_BSPC, KC_BTN3, KC_BTN2, KC_BTN1, KC_NO, KC_NO, LGUI(KC_4), LGUI(KC_5), LGUI(KC_6), LGUI(KC_0), KC_NO, KC_NO, TG(6), KC_NO, KC_NO, KC_WH_D, KC_NO, KC_NO, LGUI(KC_1), LGUI(KC_2), LGUI(KC_3), KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, MO(5), MO(7), KC_NO),
     [7] = LAYOUT_split_3x6_3(KC_NO, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI, KC_NO, SGUI(KC_7), SGUI(KC_8), SGUI(KC_9), KC_NO, KC_NO, KC_NO, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD, KC_NO, SGUI(KC_4), SGUI(KC_5), SGUI(KC_6), SGUI(KC_0), KC_NO, KC_NO, RGB_RMOD, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, SGUI(KC_1), SGUI(KC_2), SGUI(KC_3), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO)
@@ -43,11 +43,18 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                     tap_code16(KC_U);
                 }
                 break;
-            default:
+            case 4:
                 if (clockwise) {
                     tap_code16(LCTL(KC_PLUS));
                 } else {
                     tap_code16(LCTL(KC_MINS));
+                }
+                break;
+            default:
+                if (clockwise) {
+                    tap_code16(KC_PGDN);
+                } else {
+                    tap_code16(KC_PGUP);
                 }
                 break;
         }
