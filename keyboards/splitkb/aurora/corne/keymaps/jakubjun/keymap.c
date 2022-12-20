@@ -45,9 +45,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 break;
             case 4:
                 if (clockwise) {
-                    tap_code16(LCTL(KC_PLUS));
+                    tap_code16(KC_BRID);
                 } else {
-                    tap_code16(LCTL(KC_MINS));
+                    tap_code16(KC_BRIU);
                 }
                 break;
             default:
