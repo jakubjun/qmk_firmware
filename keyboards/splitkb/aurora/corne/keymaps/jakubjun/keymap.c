@@ -100,3 +100,78 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     return false;
 }
 #endif
+
+#ifdef OLED_ENABLE
+bool oled_task_user(void) {
+    // A 128x32 OLED rotated 90 degrees is 5 characters wide and 16 characters tall
+    // This example string should fill that neatly
+    const char *text = PSTR(" e");
+
+    if (is_keyboard_master()) {
+        switch (get_highest_layer(layer_state)) {
+            oled_clear();
+            case 0:
+                oled_write_ln_P(PSTR("0:abc\n"), false);
+                oled_write_ln_P(PSTR("[pgu,rst][2][6]"), false);
+                oled_write_ln_P(PSTR("[spc][1][vim search]"), false);
+                break;
+            case 1:
+                oled_write_ln_P(PSTR("1:sym,num\n"), false);
+                oled_write_ln_P(PSTR("[zoom][3][ctl]"), false);
+                oled_write_ln_P(PSTR("[_][_][_]"), false);
+                break;
+            case 2:
+                oled_write_ln_P(PSTR("2:enter,nav\n"), false);
+                oled_write_ln_P(PSTR("[_][_][_]"), false);
+                oled_write_ln_P(PSTR("[sft][3][incr]"), false);
+                break;
+            case 3:
+                oled_write_ln_P(PSTR("3:wm move dir\n"), false);
+                oled_write_ln_P(PSTR(""), false);
+                oled_write_ln_P(PSTR(""), false);
+                break;
+            case 4:
+                oled_write_ln_P(PSTR("4:wm shift dir\n"), false);
+                oled_write_ln_P(PSTR(""), false);
+                oled_write_ln_P(PSTR(""), false);
+                /* oled_write_ln_P(PSTR("[_][_][_]"), false); */
+                /* oled_write_ln_P(PSTR("[sft][3][incr]"), false); */
+                break;
+            case 5:
+                oled_write_ln_P(PSTR("5:fun\n"), false);
+                oled_write_ln_P(PSTR(""), false);
+                oled_write_ln_P(PSTR(""), false);
+                /* oled_write_ln_P(PSTR("[_][_][_]"), false); */
+                /* oled_write_ln_P(PSTR("[sft][3][incr]"), false); */
+                break;
+            case 6:
+                oled_write_ln_P(PSTR("6:wm move num\n"), false);
+                oled_write_ln_P(PSTR(""), false);
+                oled_write_ln_P(PSTR(""), false);
+                /* oled_write_ln_P(PSTR("[_][_][_]"), false); */
+                /* oled_write_ln_P(PSTR("[sft][3][incr]"), false); */
+                break;
+            case 7:
+                oled_write_ln_P(PSTR("7:rgb, wm shift num\n"), false);
+                oled_write_ln_P(PSTR(""), false);
+                oled_write_ln_P(PSTR(""), false);
+                /* oled_write_ln_P(PSTR("[_][_][_]"), false); */
+                /* oled_write_ln_P(PSTR("[sft][3][incr]"), false); */
+                break;
+            case 8:
+                oled_write_ln_P(PSTR("8\n"), false);
+                oled_write_ln_P(PSTR(""), false);
+                oled_write_ln_P(PSTR(""), false);
+                /* oled_write_ln_P(PSTR("[_][_][_]"), false); */
+                /* oled_write_ln_P(PSTR("[sft][3][incr]"), false); */
+                break;
+            default:
+                // Or use the write_ln shortcut over adding '\n' to the end of your string
+                oled_write_ln_P(PSTR("Undefined"), false);
+        }
+    } else {
+        oled_write_P(text, false);
+    }
+    return false;
+}
+#endif
