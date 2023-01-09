@@ -21,7 +21,8 @@
 #pragma once
 
 #ifdef RGBLIGHT_ENABLE
-#   define RGBLIGHT_EFFECT_BREATHING
+#    define RGBLIGHT_SPLIT
+#    define RGBLIGHT_SLEEP
 #endif
 
 #ifdef RGB_MATRIX_ENABLE
