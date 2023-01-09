@@ -29,7 +29,7 @@ enum layers {
 // and has been copied directly from `crkbd/soundmonster/keymap.c`
 
 oled_rotation_t oled_init_kb(oled_rotation_t rotation) {
-    return OLED_ROTATION_0;
+    return OLED_ROTATION_270;
 }
 
 static void render_space(void) {
