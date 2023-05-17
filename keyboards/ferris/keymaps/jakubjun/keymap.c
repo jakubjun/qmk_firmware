@@ -17,6 +17,7 @@ enum my_layers {
     MOUSE__WM_GO_TO_6,
     RGB__WM_MOVE_TO_7,
     NO__VIM_8,
+    NO__VIM_SIZES_9,
 };
 
 enum custom_keycodes {
@@ -27,6 +28,11 @@ enum custom_keycodes {
     VIM_SPLIT_H,
     VIM_SPLIT_V,
     VIM_SPLIT_CLOSE,
+    VIM_INCREASE_W_5,
+    VIM_DECREASE_W_5,
+    VIM_INCREASE_H_5,
+    VIM_DECREASE_H_5
+
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -74,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [MOUSE__WM_GO_TO_6] = LAYOUT(
-            LCTL(KC_BSPC), MO(NO__VIM_8), KC_NO, KC_WH_U, KC_NO,         KC_NO, LGUI(KC_7), LGUI(KC_8), LGUI(KC_9), KC_NO,
+            LCTL(KC_BSPC), MO(NO__VIM_8), MO(NO__VIM_SIZES_9), KC_WH_U, KC_NO,         KC_NO, LGUI(KC_7), LGUI(KC_8), LGUI(KC_9), KC_NO,
             KC_BSPC, KC_BTN3, KC_BTN2, KC_BTN1, LGUI(KC_MINS),   KC_NO, LGUI(KC_4), LGUI(KC_5), LGUI(KC_6), LGUI(KC_0),
             TG(MOUSE__WM_GO_TO_6), KC_NO, KC_NO, KC_WH_D, KC_NO,                 KC_NO, LGUI(KC_1), LGUI(KC_2), LGUI(KC_3), KC_NO,
                                  KC_NO, KC_NO,                 MO(NO__F_KEYS_5), MO(RGB__WM_MOVE_TO_7)
@@ -89,6 +95,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [NO__VIM_8] = LAYOUT(
             KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,        VIM_SPLIT_CLOSE, VIM_SPLIT_H, VIM_SPLIT_V, KC_NO, KC_NO,
             KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,        VIM_SPLIT_TO_LEFT, VIM_SPLIT_TO_DOWN, VIM_SPLIT_TO_UP, VIM_SPLIT_TO_RIGHT, KC_NO,
+            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+                                 KC_NO, KC_NO,        KC_NO, KC_NO
+    ),
+    [NO__VIM_SIZES_9] = LAYOUT(
+            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,        VIM_DECREASE_W_5, VIM_INCREASE_H_5, VIM_DECREASE_H_5, VIM_INCREASE_W_5, KC_NO,
             KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
                                  KC_NO, KC_NO,        KC_NO, KC_NO
     ),
@@ -156,6 +168,18 @@ void housekeeping_task_user(void) {
             rgblight_setrgb_at(0,30,0, 0);
             rgblight_setrgb_at(0,0,0, 1);
             break;
+        case NO__VIM_SIZES_9: // 13
+            rgblight_setrgb_at(0,30,0, 0);
+            rgblight_setrgb_at(30,0,0, 1);
+            break;
+        case 10: // 13
+            rgblight_setrgb_at(0,30,0, 0);
+            rgblight_setrgb_at(0,30,0, 1);
+            break;
+        case 11: // 13
+            rgblight_setrgb_at(0,30,0, 0);
+            rgblight_setrgb_at(0,0,30, 1);
+            break;
     }
 }
 
@@ -213,6 +237,38 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         if (record->event.pressed) {
             // when keycode QMKBEST is pressed
             SEND_STRING(SS_LCTL("w") "c");
+        } else {
+            // when keycode QMKBEST is released
+        }
+        break;
+    case VIM_INCREASE_H_5:
+        if (record->event.pressed) {
+            // when keycode QMKBEST is pressed
+            SEND_STRING("5" SS_LCTL("w") "+");
+        } else {
+            // when keycode QMKBEST is released
+        }
+        break;
+    case VIM_DECREASE_H_5:
+        if (record->event.pressed) {
+            // when keycode QMKBEST is pressed
+            SEND_STRING("5" SS_LCTL("w") "-");
+        } else {
+            // when keycode QMKBEST is released
+        }
+        break;
+    case VIM_INCREASE_W_5:
+        if (record->event.pressed) {
+            // when keycode QMKBEST is pressed
+            SEND_STRING("5" SS_LCTL("w") ">");
+        } else {
+            // when keycode QMKBEST is released
+        }
+        break;
+    case VIM_DECREASE_W_5:
+        if (record->event.pressed) {
+            // when keycode QMKBEST is pressed
+            SEND_STRING("5" SS_LCTL("w") "<");
         } else {
             // when keycode QMKBEST is released
         }
