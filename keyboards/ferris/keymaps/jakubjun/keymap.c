@@ -165,19 +165,19 @@ void housekeeping_task_user(void) {
             rgblight_setrgb_at(30,0,0, 0);
             rgblight_setrgb_at(0,0,30, 1);
             break;
-        case NO__VIM_8: // 13
+        case NO__VIM_8: // 20
             rgblight_setrgb_at(0,30,0, 0);
             rgblight_setrgb_at(0,0,0, 1);
             break;
-        case NO__VIM_SIZES_9: // 13
+        case NO__VIM_SIZES_9: // 21
             rgblight_setrgb_at(0,30,0, 0);
             rgblight_setrgb_at(30,0,0, 1);
             break;
-        case 10: // 13
+        case 10: // 22
             rgblight_setrgb_at(0,30,0, 0);
             rgblight_setrgb_at(0,30,0, 1);
             break;
-        case 11: // 13
+        case 11: // 23
             rgblight_setrgb_at(0,30,0, 0);
             rgblight_setrgb_at(0,0,30, 1);
             break;
