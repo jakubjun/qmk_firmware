@@ -47,6 +47,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* #endif */
 
 /* #define TAPPING_TOGGLE 2 */
+
+#define SPLIT_LAYER_STATE_ENABLE
+
 #undef RGB_DI_PIN
 #define RGB_DI_PIN 25
 #undef RGBLED_NUM
