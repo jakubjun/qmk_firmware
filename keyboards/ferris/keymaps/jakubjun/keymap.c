@@ -31,8 +31,9 @@ enum custom_keycodes {
     VIM_INCREASE_W_5,
     VIM_DECREASE_W_5,
     VIM_INCREASE_H_5,
-    VIM_DECREASE_H_5
-
+    VIM_DECREASE_H_5,
+    VIM_ONLY,
+    VIM_EQUALIZE,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -95,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [NO__VIM_8] = LAYOUT(
             KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,        VIM_SPLIT_CLOSE, VIM_SPLIT_H, VIM_SPLIT_V, KC_NO, KC_NO,
             KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,        VIM_SPLIT_TO_LEFT, VIM_SPLIT_TO_DOWN, VIM_SPLIT_TO_UP, VIM_SPLIT_TO_RIGHT, KC_NO,
-            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,        VIM_ONLY, VIM_EQUALIZE, RCS(KC_PLUS), RCS(KC_MINUS), RCS(KC_BSPC),
                                  KC_NO, KC_NO,        KC_NO, KC_NO
     ),
     [NO__VIM_SIZES_9] = LAYOUT(
@@ -269,6 +270,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         if (record->event.pressed) {
             // when keycode QMKBEST is pressed
             SEND_STRING("5" SS_LCTL("w") "<");
+        } else {
+            // when keycode QMKBEST is released
+        }
+        break;
+    case VIM_ONLY:
+        if (record->event.pressed) {
+            // when keycode QMKBEST is pressed
+            SEND_STRING(SS_LCTL("w") "o");
+        } else {
+            // when keycode QMKBEST is released
+        }
+        break;
+    case VIM_EQUALIZE:
+        if (record->event.pressed) {
+            // when keycode QMKBEST is pressed
+            SEND_STRING(SS_LCTL("w") "=");
         } else {
             // when keycode QMKBEST is released
         }
