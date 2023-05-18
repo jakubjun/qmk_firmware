@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI,          KC_NO, SGUI(KC_7), SGUI(KC_8), SGUI(KC_9), KC_NO,
             RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD,          KC_NO, SGUI(KC_4), SGUI(KC_5), SGUI(KC_6), SGUI(KC_0),
             RGB_RMOD, KC_NO, KC_NO, KC_NO, KC_NO,                 KC_NO, SGUI(KC_1), SGUI(KC_2), SGUI(KC_3), KC_NO,
-                                    KC_NO, KC_NO,                 KC_NO, KC_TRNS
+                                    KC_NO, KC_NO,                 KC_NO, KC_NO
     ),
     [NO__VIM_8] = LAYOUT(
             KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,        VIM_SPLIT_CLOSE, VIM_SPLIT_H, VIM_SPLIT_V, KC_NO, KC_NO,
