@@ -34,7 +34,6 @@ enum custom_keycodes {
     VIM_DECREASE_H_5,
     VIM_ONLY,
     VIM_EQUALIZE,
-    MY_RGB_NEXT
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -91,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [RGB__WM_MOVE_TO_7] = LAYOUT(
             RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, RGB_SPI,          KC_NO, SGUI(KC_7), SGUI(KC_8), SGUI(KC_9), KC_NO,
             RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_SPD,          KC_NO, SGUI(KC_4), SGUI(KC_5), SGUI(KC_6), SGUI(KC_0),
-            RGB_RMOD, MY_RGB_NEXT, KC_NO, KC_NO, KC_NO,                 KC_NO, SGUI(KC_1), SGUI(KC_2), SGUI(KC_3), KC_NO,
+            RGB_RMOD, KC_NO, KC_NO, KC_NO, KC_NO,                 KC_NO, SGUI(KC_1), SGUI(KC_2), SGUI(KC_3), KC_NO,
                                     KC_NO, KC_NO,                 KC_NO, KC_NO
     ),
     [NO__VIM_8] = LAYOUT(
@@ -122,51 +121,16 @@ void keyboard_post_init_user(void) {
     rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
 }
 
-enum custom_rgb_modes {
-    LAYERS,
-    POLICE,
-    DISCO,
-    WPM,
-    count
-};
+void keyboard_pre_init_user(void) {
+    // Set our LED pin as output
+    setPinOutput(24);
+    // Turn the LED off
+    // (Due to technical reasons, high is off and low is on)
+    writePinHigh(24);
+}
 
-int custom_rgb_mode = LAYERS;
-
-int disco_rgb = 0;
-int disco_rgb_max = 16777216;
-int timer = 0;
-int police_color = 0;
 
 void housekeeping_task_user(void) {
-    if (!rgblight_is_enabled()) {
-        return;
-    }
-
-    if (custom_rgb_mode == POLICE) {
-
-        if (police_color == 0) {
-            rgblight_setrgb_at(255,0,0, 0);
-            rgblight_setrgb_at(0,0,255, 1);
-        } else {
-            rgblight_setrgb_at(0,0,255, 0);
-            rgblight_setrgb_at(255,0,0, 1);
-        }
-
-        if (timer < 1500) {
-            timer++;
-            return;
-        }
-        timer = 0;
-
-        if (police_color == 0) {
-            police_color = 1;
-        } else {
-            police_color = 0;
-        }
-        return;
-
-    }
-
     switch (get_highest_layer(layer_state | default_layer_state)) {
         case ALPHAS__ALPHAS_0: // 00
             // Default layer
@@ -285,11 +249,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case VIM_EQUALIZE:
         if (record->event.pressed) {
             SEND_STRING(SS_LCTL("w") "=");
-        }
-        break;
-    case MY_RGB_NEXT:
-        if (record->event.pressed) {
-            custom_rgb_mode = (custom_rgb_mode + 1) % count;
         }
         break;
 
