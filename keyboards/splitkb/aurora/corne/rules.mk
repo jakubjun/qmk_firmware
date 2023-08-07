@@ -14,3 +14,4 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 DEFAULT_FOLDER = splitkb/aurora/corne/rev1
+BOOTLOADER=atmel-dfu
