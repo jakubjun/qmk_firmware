@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [MOUSE__WM_GO_TO_6] = LAYOUT(
             LCTL(KC_BSPC), MO(NO__VIM_8), MO(NO__VIM_SIZES_9), KC_WH_U, KC_NO,         KC_NO, LGUI(KC_7), LGUI(KC_8), LGUI(KC_9), KC_NO,
             KC_BSPC, KC_BTN3, KC_BTN2, KC_BTN1, LGUI(KC_MINS),   KC_NO, LGUI(KC_4), LGUI(KC_5), LGUI(KC_6), LGUI(KC_0),
-            TG(MOUSE__WM_GO_TO_6), KC_NO, KC_NO, KC_WH_D, KC_NO,KC_NO,                 KC_NO, KC_NO, LGUI(KC_1), LGUI(KC_2), LGUI(KC_3), KC_NO,
+            TG(MOUSE__WM_GO_TO_6), LGUI(KC_BTN2), LGUI(KC_BTN1), KC_WH_D, KC_NO,KC_NO,                 KC_NO, KC_NO, LGUI(KC_1), LGUI(KC_2), LGUI(KC_3), KC_NO,
                            KC_NO,KC_NO,KC_NO,  KC_NO, KC_NO,KC_NO,                 KC_NO,MO(NO__F_KEYS_5), MO(RGB__WM_MOVE_TO_7),KC_NO,KC_NO,KC_NO
     ),
 
