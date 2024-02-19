@@ -11,6 +11,8 @@ enum my_layers {
     RGB__WM_MOVE_TO_7,
     NO__VIM_8,
     NO__VIM_SIZES_9,
+    TMUX_10,
+    TMUX_W_11,
 };
 
 enum custom_keycodes {
@@ -27,6 +29,30 @@ enum custom_keycodes {
     VIM_DECREASE_H_5,
     VIM_ONLY,
     VIM_EQUALIZE,
+    TMUX_SPLIT_V,
+    TMUX_SPLIT_H,
+    TMUX_LEFT,
+    TMUX_UP,
+    TMUX_RIGHT,
+    TMUX_DOWN,
+    TMUX_SAVE,
+    TMUX_LOAD,
+    TMUX_DETACH,
+    TMUX_NEW_W,
+    TMUX_W_1,
+    TMUX_W_2,
+    TMUX_W_3,
+    TMUX_W_4,
+    TMUX_W_5,
+    TMUX_W_6,
+    TMUX_W_7,
+    TMUX_W_8,
+    TMUX_W_9,
+    TMUX_W_0,
+    TMUX_NEXT_W,
+    TMUX_PREV_W,
+    TMUX_WINDOWS,
+    TMUX_CLOSE_PANE,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -56,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             LGUI(KC_Q), LGUI(KC_V), LGUI(KC_H), LGUI(KC_F), KC_NO,        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
             LGUI(KC_R), LGUI(KC_W), LGUI(KC_S), LGUI(KC_E), LGUI(KC_G),   LGUI(KC_J), LGUI(KC_K), LGUI(KC_L), LGUI(KC_SCLN), LGUI(KC_A),
             KC_NO, KC_NO, KC_NO, SGUI(KC_Q), SGUI(KC_R),KC_NO,              KC_NO,     LGUI(KC_D), LGUI(KC_ENT), KC_NO, KC_NO, KC_NO,
-                                         KC_NO,KC_NO,KC_NO,KC_NO, MO(BOOT__WM_MOVE_4),KC_NO, KC_NO,                  MO(BOOT__WM_MOVE_4), KC_NO,KC_NO,KC_NO,KC_NO
+                                         KC_NO,KC_NO,KC_NO,KC_NO, MO(BOOT__WM_MOVE_4),KC_NO, KC_NO,                  MO(TMUX_10), MO(TMUX_W_11),KC_NO,KC_NO,KC_NO
     ),
 
     [BOOT__WM_MOVE_4] = LAYOUT(
@@ -74,9 +100,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [MOUSE__WM_GO_TO_6] = LAYOUT(
-            LCTL(KC_BSPC), MO(NO__VIM_8), MO(NO__VIM_SIZES_9), KC_WH_U, KC_NO,         KC_NO, LGUI(KC_7), LGUI(KC_8), LGUI(KC_9), KC_NO,
+            LCTL(KC_BSPC), MO(NO__VIM_8), MO(NO__VIM_SIZES_9), KC_WH_U, MO(TMUX_10),         KC_NO, LGUI(KC_7), LGUI(KC_8), LGUI(KC_9), KC_NO,
             KC_BSPC, KC_BTN3, KC_BTN2, KC_BTN1, LGUI(KC_MINS),   KC_NO, LGUI(KC_4), LGUI(KC_5), LGUI(KC_6), LGUI(KC_0),
-            TG(MOUSE__WM_GO_TO_6), LGUI(KC_BTN2), LGUI(KC_BTN1), KC_WH_D, KC_NO,KC_NO,                 KC_NO, KC_NO, LGUI(KC_1), LGUI(KC_2), LGUI(KC_3), KC_NO,
+            TG(MOUSE__WM_GO_TO_6), LGUI(KC_BTN2), LGUI(KC_BTN1), KC_WH_D, MO(TMUX_W_11),KC_NO,                 KC_NO, KC_NO, LGUI(KC_1), LGUI(KC_2), LGUI(KC_3), KC_NO,
                            KC_NO,KC_NO,KC_NO,  KC_NO, KC_NO,KC_NO,                 KC_NO,MO(NO__F_KEYS_5), MO(RGB__WM_MOVE_TO_7),KC_NO,KC_NO,KC_NO
     ),
 
@@ -96,6 +122,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
             KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,        VIM_DECREASE_W_5, VIM_INCREASE_H_5, VIM_DECREASE_H_5, VIM_INCREASE_W_5, KC_NO,
             KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,KC_NO,       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+                                KC_NO,KC_NO,KC_NO, KC_NO, KC_NO, KC_NO,     KC_NO,  KC_NO, KC_NO, KC_NO,KC_NO,KC_NO
+    ),
+    [TMUX_10] = LAYOUT(
+            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,        TMUX_CLOSE_PANE, TMUX_SPLIT_H, TMUX_SPLIT_V, TMUX_NEW_W, TMUX_WINDOWS,
+            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,        TMUX_LEFT, TMUX_UP, TMUX_DOWN, TMUX_RIGHT, TMUX_DETACH,
+            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,KC_NO,       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+                                KC_NO,KC_NO,KC_NO, KC_NO, KC_NO, KC_NO,     KC_NO,  KC_NO, KC_NO, KC_NO,KC_NO,KC_NO
+    ),
+    [TMUX_W_11] = LAYOUT(
+            TMUX_CLOSE_PANE, TMUX_SPLIT_V, TMUX_SPLIT_H, TMUX_NEW_W, KC_NO,        KC_NO, TMUX_W_7, TMUX_W_8, TMUX_W_9, KC_NO,
+            TMUX_DETACH, KC_NO, TMUX_PREV_W, TMUX_NEXT_W, TMUX_WINDOWS,        KC_NO, TMUX_W_4, TMUX_W_5, TMUX_W_6, TMUX_W_0,
+            TMUX_LOAD, TMUX_SAVE, KC_NO, KC_NO, KC_NO, KC_NO,       KC_NO, KC_NO, TMUX_W_1, TMUX_W_2, TMUX_W_3, KC_NO,
                                 KC_NO,KC_NO,KC_NO, KC_NO, KC_NO, KC_NO,     KC_NO,  KC_NO, KC_NO, KC_NO,KC_NO,KC_NO
     ),
     // empty for new layers
@@ -174,6 +212,126 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case VIM_EQUALIZE:
         if (record->event.pressed) {
             SEND_STRING(SS_LCTL("w") "=");
+        }
+        break;
+    case TMUX_SPLIT_V:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") "\"");
+        }
+        break;
+    case TMUX_SPLIT_H:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") "%");
+        }
+        break;
+    case TMUX_LEFT:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") SS_TAP(X_LEFT));
+        }
+        break;
+    case TMUX_UP:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") SS_TAP(X_UP));
+        }
+        break;
+    case TMUX_RIGHT:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") SS_TAP(X_RIGHT));
+        }
+        break;
+    case TMUX_DOWN:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") SS_TAP(X_DOWN));
+        }
+        break;
+    case TMUX_SAVE:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") SS_LCTL("s"));
+        }
+        break;
+    case TMUX_LOAD:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") SS_LCTL("r"));
+        }
+        break;
+    case TMUX_DETACH:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") "d");
+        }
+        break;
+    case TMUX_NEW_W:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") "c");
+        }
+        break;
+    case TMUX_W_1:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") "1");
+        }
+        break;
+    case TMUX_W_2:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") "2");
+        }
+        break;
+    case TMUX_W_3:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") "3");
+        }
+        break;
+    case TMUX_W_4:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") "4");
+        }
+        break;
+    case TMUX_W_5:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") "5");
+        }
+        break;
+    case TMUX_W_6:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") "6");
+        }
+        break;
+    case TMUX_W_7:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") "7");
+        }
+        break;
+    case TMUX_W_8:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") "8");
+        }
+        break;
+    case TMUX_W_9:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") "9");
+        }
+        break;
+    case TMUX_W_0:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") "0");
+        }
+        break;
+    case TMUX_NEXT_W:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") "n");
+        }
+        break;
+    case TMUX_PREV_W:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") "p");
+        }
+        break;
+    case TMUX_WINDOWS:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") "w");
+        }
+        break;
+    case TMUX_CLOSE_PANE:
+        if (record->event.pressed) {
+            SEND_STRING(SS_LCTL("b") "x");
         }
         break;
 
