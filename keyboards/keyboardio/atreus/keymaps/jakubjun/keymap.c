@@ -125,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 KC_NO,KC_NO,KC_NO, KC_NO, KC_NO, KC_NO,     KC_NO,  KC_NO, KC_NO, KC_NO,KC_NO,KC_NO
     ),
     [TMUX_10] = LAYOUT(
-            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,        TMUX_CLOSE_PANE, TMUX_SPLIT_H, TMUX_SPLIT_V, TMUX_NEW_W, TMUX_WINDOWS,
+            KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,        TMUX_CLOSE_PANE, TMUX_SPLIT_V, TMUX_SPLIT_H, TMUX_NEW_W, TMUX_WINDOWS,
             KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,        TMUX_LEFT, TMUX_UP, TMUX_DOWN, TMUX_RIGHT, TMUX_DETACH,
             KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,KC_NO,       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
                                 KC_NO,KC_NO,KC_NO, KC_NO, KC_NO, KC_NO,     KC_NO,  KC_NO, KC_NO, KC_NO,KC_NO,KC_NO
